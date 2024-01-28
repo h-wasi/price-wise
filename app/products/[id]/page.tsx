@@ -1,7 +1,60 @@
+import { getProductById } from "@/lib/actions";
+import { Product } from "@/lib/types/index.types";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
+interface Props {
+  params: { id: string };
+}
 
-function ProductDetails() {
-  return <div>page</div>;
+async function ProductDetails({ params: { id } }: Props) {
+  const product: Product = await getProductById(id);
+  if (!product) redirect("/");
+  return (
+    <div className="product-container">
+      <div className="flex gap-28 xl:flex-row flex-col">
+        <div className="product-image">
+          <Image
+            src={product.image}
+            width={580}
+            height={400}
+            alt={id}
+            className="mx-auto"
+          />
+        </div>
+        <div className="flex-1 flex flex-col">
+          <div className="flex justify-between items-start gap-5 pb-6 flex-wrap">
+            <div className="flex flex-col gap-3">
+              <p className="text-[28px] text-secondary font-semibold">
+                {product.title}
+              </p>
+              <Link
+                href={product.url}
+                target="_blank"
+                className="text-base text-black opacity-50"
+              >
+                Visit Product
+              </Link>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="product-hearts">
+                <Image
+                  src={"/assets/icons/red-heart.svg"}
+                  alt="heart"
+                  width={20}
+                  height={20}
+                ></Image>
+                <p className="text-base font-semibold text-[#d46f77]">
+                  {product.reviewsCount}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ProductDetails;
