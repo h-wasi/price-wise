@@ -157,6 +157,7 @@ async function ProductDetails({
             </div>
           </div>
           <Modal />
+          {/* modal */}
         </div>
       </div>
       <div className="flex flex-col gap-16">
