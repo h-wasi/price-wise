@@ -54,8 +54,30 @@ export async function getProductById(productId: string) {
 export async function getAllProducts() {
   try {
     connectToDB();
-    const products = Product.find({});
+    const products = await Product.find({});
     return products;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSimilarProducts(
+  productId: string
+  // category: string
+) {
+  try {
+    connectToDB();
+    const currentProduct = await Product.find({ productId });
+    if (!currentProduct) return null;
+    const similarProducts = await Product.find({
+      _id: { $ne: productId },
+    }).limit(3);
+    // TODO: for enhanced results
+    // const similarProducts = await Product.find({
+    //  _id: { $ne: productId },
+    //  category: currentProduct.category,
+    // }).limit(3);
+    return similarProducts;
   } catch (error) {
     console.log(error);
   }
