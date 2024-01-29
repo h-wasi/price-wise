@@ -39,6 +39,9 @@ export async function scrapeAmazonProduct(url: string) {
       $("#priceblock_dealprice"),
       $(".a-size-base.a-color-price")
     );
+    // const category = $(
+    //   "#a-page > nav > ul > li.mn-item--first.mn-item.js-item-with-flyout > div.mn-item__link-container > a.a-size-base-plus.a-color-base.a-link-normal.mn-item--first__sub-link.mn-item__link.mn-link > span"
+    // );
     const outOfStock =
       $("#availability span").text().trim().toLowerCase() ===
       "currently unavailable";

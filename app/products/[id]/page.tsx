@@ -1,5 +1,6 @@
 import { getProductById } from "@/lib/actions";
 import { Product } from "@/lib/types/index.types";
+import { formatNumber } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -49,6 +50,67 @@ async function ProductDetails({ params: { id } }: Props) {
                   {product.reviewsCount}
                 </p>
               </div>
+              <div className="p-2 bg-white-200 rounded-10">
+                <Image
+                  src={"/assets/icons/bookmark.svg"}
+                  alt="bookmark"
+                  width={20}
+                  height={20}
+                ></Image>
+              </div>
+              <div className="p-2 bg-white-200 rounded-10">
+                <Image
+                  src={"/assets/icons/share.svg"}
+                  alt="share"
+                  width={20}
+                  height={20}
+                ></Image>
+              </div>
+            </div>
+          </div>
+          <div className="product-info">
+            <div className="flex flex-col gap-2">
+              <p className="t-[34px] text-secondary font-bold">
+                {product.currency} {formatNumber(product.currentPrice)}
+              </p>
+              <p className="t-[21px] text-black opacity-50 line-through">
+                {product.currency} {formatNumber(product.originalPrice)}
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-3">
+                <div className="product-stars">
+                  <Image
+                    src={"/assets/icons/star.svg"}
+                    alt="stars"
+                    width={16}
+                    height={16}
+                  ></Image>
+                  <p className="text-sm text-primary-orange font-semibold">
+                    {product.stars || 25}
+                  </p>
+                </div>
+                <div className="product-reviews">
+                  <Image
+                    src={"/assets/icons/comment.svg"}
+                    alt="comment"
+                    width={16}
+                    height={16}
+                  ></Image>
+                  <p className="text-sm text-secondary font-semibold">
+                    {product.reviewsCount} Reviews
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm text-black opacity-50">
+                <span className="text-primary-green font-semibold">93% </span>
+                of buyers have recommended this
+              </p>
+            </div>
+          </div>
+          <div className="my-7 flex flex-col gap-5">
+            <div className="flex flex-wrap gap-5">
+              
             </div>
           </div>
         </div>
