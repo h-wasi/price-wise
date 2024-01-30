@@ -156,8 +156,7 @@ async function ProductDetails({
               ></PriceInfoCard>
             </div>
           </div>
-          <Modal />
-          {/* modal */}
+          <Modal productId={id} />
         </div>
       </div>
       <div className="flex flex-col gap-16">
