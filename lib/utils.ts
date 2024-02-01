@@ -6,7 +6,6 @@ const Notification = {
   LOWEST_PRICE: "LOWEST_PRICE",
   THRESHOLD_MET: "THRESHOLD_MET",
 };
-
 const THRESHOLD_PERCENTAGE = 40;
 
 // Extracts and returns the price from a list of possible elements.

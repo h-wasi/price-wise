@@ -13,13 +13,12 @@ const Notification = {
   LOWEST_PRICE: "LOWEST_PRICE",
   THRESHOLD_MET: "THRESHOLD_MET",
 };
+const THRESHOLD_PERCENTAGE = 40;
 
 export async function generateEmailBody(
   product: EmailProductInfo,
   type: NotificationType
 ) {
-  const THRESHOLD_PERCENTAGE = 40;
-
   const shortenedTitle =
     product.title.length > 20
       ? `${product.title.substring(0, 20)}...`
@@ -81,17 +80,17 @@ export async function generateEmailBody(
 }
 const transporter = nodemailer.createTransport({
   pool: true,
-  service: "outlook",
+  service: "hotmail",
   port: 2525,
   auth: {
-    user: "nabuzastream@gmail.com",
+    user: process.env.EMAIL,
     pass: process.env.EMAIL_PASSWORD,
   },
   maxConnections: 1,
 });
 export async function sendEmail(emailContent: EmailContent, sendTo: string[]) {
   const mailOptions = {
-    from: "nabuzastream@gmail.com",//auth failure
+    from: process.env.EMAIL, //auth failure
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
