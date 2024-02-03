@@ -2,16 +2,28 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+# .env Guide
+
+<!-- Get username and password from BrightData as it handles main scraping/Captcha solving responsibility-->
+
+BRIGHT_DATA_USERNAME =
+BRIGHT_DATA_PASSWORD =
+
+<!-- Get username and password from mongoDB for DataBase-->
+
+MONGO_DB_USERNAME =
+MONGO_DB_PASSWORD =
+MONGODB_URI =
+
+<!-- Get username and password from Outlook ⚠ Never forget to verify E-mail with phone number...otherwise you'll get blocked for sure-->
+
+EMAIL =
+EMAIL_PASSWORD =
+
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
