@@ -16,6 +16,10 @@ const Notification = {
   LOWEST_PRICE: "LOWEST_PRICE",
   THRESHOLD_MET: "THRESHOLD_MET",
 };
+export const maxDuration = 300;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     connectToDB();
