@@ -29,7 +29,7 @@ export async function GET() {
           ...currentProduct.priceHistory,
           { price: scrapedProduct.currentPrice },
         ];
-        currentProduct = {
+        const product = {
           ...scrapedProduct,
           priceHistory: updatedPriceHistory,
           lowestPrice: getLowestPrice(updatedPriceHistory),
@@ -40,7 +40,7 @@ export async function GET() {
           {
             url: scrapedProduct.url,
           },
-          currentProduct,
+          product,
           { upsert: true, new: true }
         );
         const emailNotifType = getEmailNotifType(
